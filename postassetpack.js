@@ -3,7 +3,7 @@ const json = JSON.parse(fs.readFileSync("./public/assets/assets-manifest.json", 
 json.bundles.forEach(bundle => {
     bundle.assets.forEach(asset => {
         console.log(asset.name);
-        if (asset.name && asset.name.some(item => item.endsWith(".atlas"))) {
+        if (asset.name && Array.isArray(asset.name) && asset.name.some(item => item.endsWith(".atlas"))) {
             asset.name = asset.name[0];
         }
     })
